@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#030916" />
+  <title>한국어 공부</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      min-height: 100svh; display: grid; place-items: center; padding: 28px;
+      color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      background: linear-gradient(rgba(1, 8, 21, .44), rgba(1, 6, 17, .68)), url("nightskylake.png") center/cover fixed;
+    }
+    main { width: min(760px, 100%); padding: clamp(28px, 6vw, 50px); border: 1px solid rgba(255,255,255,.28); border-radius: 26px; background: rgba(10, 28, 59, .54); box-shadow: 0 18px 54px rgba(0,0,0,.32); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+    .icon { font-size: 34px; }
+    h1 { margin: 12px 0 12px; font-size: clamp(34px, 6vw, 56px); letter-spacing: -.065em; }
+    p { margin: 0; color: rgba(255,255,255,.82); font-size: clamp(15px, 2vw, 18px); line-height: 1.75; letter-spacing: -.025em; }
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 30px;
+    }
+    .actions a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 13px 18px;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 14px;
+      color: #fff;
+      text-decoration: none;
+      background: rgba(255,255,255,.11);
+      white-space: nowrap;
+    }
+    .actions a:hover, .actions a:focus-visible { background: rgba(255,255,255,.20); outline: none; }
+    @media (max-width: 480px) {
+      .actions { flex-direction: column; align-items: stretch; }
+      .actions a { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="icon" aria-hidden="true">📚</div>
+    <h1>한국어 공부</h1>
+    <p>한국어 학습 공간입니다.</p>
+    <nav class="actions" aria-label="페이지 이동">
+      <a href="index.html">‹ 홈으로 돌아가기</a>
+      <a href="abc.html">시작하기 ›</a>
+    </nav>
+  </main>
+</body>
+</html>
