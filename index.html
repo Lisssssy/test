@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#030916" />
+  <title>Welcome</title>
+  <style>
+    :root {
+      --text: #ffffff;
+      --subtext: rgba(240, 246, 255, 0.78);
+      --glass: rgba(19, 37, 70, 0.42);
+      --glass-hover: rgba(46, 78, 132, 0.56);
+      --line: rgba(255, 255, 255, 0.34);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #030916;
+    }
+
+    body {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      overflow-x: hidden;
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+        "Noto Sans KR", "Segoe UI", sans-serif;
+    }
+
+    /* 배경 이미지는 index.html과 같은 폴더의 nightskylake.png를 사용합니다. */
+    .background,
+    .shade {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    /* 음수 z-index를 쓰지 않아 iPad/Safari에서도 배경이 숨지 않습니다. */
+    .background {
+      z-index: 0;
+      background-color: #030916;
+      background-image: url("nightskylake.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+    }
+
+    .shade {
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(0, 7, 19, 0.14) 0%, rgba(0, 7, 19, 0.04) 45%, rgba(0, 5, 14, 0.32) 100%),
+        radial-gradient(ellipse at center, rgba(4, 16, 40, 0.02) 0%, rgba(0, 5, 14, 0.22) 100%);
+    }
+
+    .home {
+      position: relative;
+      z-index: 2;
+      width: min(540px, calc(100vw - 44px));
+      padding: 56px 0 84px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(38px, 5vw, 56px);
+      font-weight: 780;
+      line-height: 1.08;
+      letter-spacing: -0.065em;
+      text-shadow: 0 5px 26px rgba(0, 0, 0, 0.44);
+    }
+
+    .subtitle {
+      margin: 13px 0 34px;
+      color: var(--subtext);
+      font-size: clamp(15px, 1.8vw, 18px);
+      line-height: 1.55;
+      letter-spacing: -0.025em;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.48);
+    }
+
+    .menu {
+      display: grid;
+      gap: 14px;
+    }
+
+    .menu-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 86px;
+      padding: 17px 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      color: var(--text);
+      text-align: left;
+      text-decoration: none;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), var(--glass));
+      box-shadow: 0 15px 42px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(13px) saturate(118%);
+      -webkit-backdrop-filter: blur(13px) saturate(118%);
+      transition: transform 170ms ease, background 170ms ease, border-color 170ms ease;
+    }
+
+    .menu-card:hover,
+    .menu-card:focus-visible {
+      transform: translateY(-3px);
+      border-color: rgba(255, 255, 255, 0.62);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.24), var(--glass-hover));
+      outline: none;
+    }
+
+    .menu-card:active { transform: scale(0.985); }
+
+    .card-label {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .icon {
+      display: grid;
+      flex: 0 0 auto;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.11);
+      font-size: 23px;
+    }
+
+    .card-text { min-width: 0; }
+
+    .card-title {
+      display: block;
+      font-size: clamp(19px, 2.5vw, 22px);
+      font-weight: 760;
+      letter-spacing: -0.04em;
+    }
+
+    .card-description {
+      display: block;
+      margin-top: 4px;
+      color: rgba(243, 248, 255, 0.74);
+      font-size: 13px;
+      letter-spacing: -0.025em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .arrow {
+      flex: 0 0 auto;
+      margin-left: 16px;
+      font-size: 34px;
+      font-weight: 280;
+      line-height: 1;
+      opacity: 0.9;
+    }
+
+    footer {
+      position: fixed;
+      z-index: 2;
+      right: 20px;
+      bottom: 18px;
+      left: 20px;
+      color: rgba(239, 246, 255, 0.62);
+      font-size: 13px;
+      text-align: center;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.62);
+    }
+
+    @media (max-width: 600px) {
+      .background { background-position: 58% center; }
+      .home { width: min(470px, calc(100vw - 34px)); padding: 46px 0 78px; }
+      .subtitle { margin-bottom: 28px; }
+      .menu-card { min-height: 80px; padding: 16px 18px; border-radius: 17px; }
+      .icon { width: 40px; height: 40px; border-radius: 13px; font-size: 21px; }
+      .card-description { font-size: 12px; }
+    }
+
+    @media (max-height: 610px) and (orientation: landscape) {
+      .home { width: min(580px, calc(100vw - 60px)); padding: 28px 0 56px; }
+      .subtitle { margin: 8px 0 18px; }
+      .menu { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .menu-card { min-height: 78px; }
+      .card-description { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .menu-card { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="background" aria-hidden="true"></div>
+  <div class="shade" aria-hidden="true"></div>
+
+  <main class="home">
+    <h1>Welcome</h1>
+    <p class="subtitle">필요한 학습을 선택하세요.</p>
+
+    <nav class="menu" aria-label="메인 메뉴">
+      <a class="menu-card" href="ismsp.html">
+        <span class="card-label">
+          <span class="icon" aria-hidden="true">🛡️</span>
+          <span class="card-text">
+            <span class="card-title">ISMS-P</span>
+            <span class="card-description">정보보호·개인정보보호 관리체계 학습</span>
+          </span>
+        </span>
+        <span class="arrow" aria-hidden="true">›</span>
+      </a>
+
+      <a class="menu-card" href="korean.html">
+        <span class="card-label">
+          <span class="icon" aria-hidden="true">📚</span>
+          <span class="card-text">
+            <span class="card-title">한국어 공부</span>
+            <span class="card-description">단어, 어휘, 문법, 표현을 차곡차곡 정리</span>
+          </span>
+        </span>
+        <span class="arrow" aria-hidden="true">›</span>
+      </a>
+    </nav>
+  </main>
+
+  <footer>© 2026 My Web App. All rights reserved.</footer>
+</body>
+</html>
