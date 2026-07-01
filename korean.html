@@ -24,7 +24,7 @@
     }
     .levels {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-template-columns: repeat(6, minmax(0, 1fr));
       gap: 10px;
     }
     .actions a {
@@ -38,10 +38,25 @@
       color: #fff;
       text-decoration: none;
       background: rgba(255,255,255,.11);
-      white-space: nowrap;
       transition: background .18s ease, transform .18s ease;
     }
-    .levels a { font-weight: 700; }
+    .levels a {
+      min-width: 0;
+      min-height: 68px;
+      padding: 9px 6px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      font-weight: 700;
+      line-height: 1.15;
+      text-align: center;
+      white-space: normal;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+    }
+    .level-name { display: block; }
+    .course-label { display: block; font-size: .82em; font-weight: 600; }
     .actions a:hover, .actions a:focus-visible { background: rgba(255,255,255,.20); outline: none; transform: translateY(-1px); }
     @media (max-width: 640px) {
       .levels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -63,7 +78,8 @@
         <a href="step2.html">2단계</a>
         <a href="step3.html">3단계</a>
         <a href="step4.html">4단계</a>
-        <a href="step5.html">5단계</a>
+        <a href="step5.html" aria-label="5단계 - 기본과정"><span class="level-name">5단계</span><span class="course-label">기본과정</span></a>
+        <a href="step5-1" aria-label="5단계 - 귀화과정"><span class="level-name">5단계</span><span class="course-label">귀화과정</span></a>
       </div>
       <a href="index.html">‹ 홈으로 돌아가기</a>
     </nav>
